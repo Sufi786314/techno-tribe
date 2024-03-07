@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}Services{% endblock title %}
+
+{% block body %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- meta tag -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!-- font awesome -->
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+		<!-- bootstrap CDN -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+		<!-- my custom css -->
+		<link rel="stylesheet" href="SP.css">
+	</head>
+	<style>
+		/*
+[0]GENERAL
+[1]MENU
+[2]MAIN CONTENT
+[3]MEDIA QUERIES
+*/
+
+/*[0]GENERAL*/
+* {
+    color:#fff;
+    font-size:12px;
+      transition: 0.5s ease;
+      box-sizing: border-box;
+  }
+  body{
+      font-size: 14px;
+      color:#fff;
+      background-color: #3F4C56;
+  }
+  
+  a{
+      text-transform: uppercase;
+      color:#fff;
+  }
+  
+  a:hover{
+      color:#fff;
+      text-decoration: none;
+      text-shadow: 1px 1px 15px #fff;
+  }
+  
+  /*[1]MENU*/
+  #menu{
+      color:#fff;
+      transition: 0.5s ease;
+      box-sizing: border-box;
+      background-color: #1A6E88;
+      padding-top:5%;
+      padding: 1%;
+      text-align: left;
+      position: fixed;
+      right: -15%;
+      top: 0;
+      height: 100%;
+      width: 20%;
+  }
+  
+  #menu i{
+      font-size: 25px;
+  }
+  
+  .fas{
+      padding: 5%;
+      display: block;
+  }
+  #menu span{
+      color:transparent;
+      padding: 5%;
+      padding-left: 20%;
+      font-size: 20px;
+  }
+  .fa-bars{
+      padding-top: 15%;
+  }
+  .menuExpand{
+      position: fixed;
+      top:0;
+      right:0!important;
+  }
+  .whiteText{
+      color:#fff !important;
+  }
+  
+  
+  /*[2]MAIN CONTENT*/
+  #topLeft,
+  #topRight,
+  #bottomLeft,
+  #bottomRight{
+      box-shadow: -5px 10px 15px #2A3D4E;
+      margin: 0;
+      width: 35%;
+      background-color: #1A6E88;
+      padding: 3%;
+  }
+  
+  #studentImage{
+      width: 200px;
+      height: auto;
+      padding:0;
+  }
+  
+  #topLeft{
+      max-height: 300px;
+      position: fixed;
+      top: 5%;
+      left:10%;
+  }
+  #topRight{
+      max-height:300px;
+      position: fixed;
+      top:5%;
+      left: 50%;
+  }
+  
+  .progress{
+      height: 40px;
+  }
+  
+  #bottomLeft{
+      position: fixed;
+      top: 350px;
+      left:10%;
+      max-height:200px;
+  }
+  
+  #bottomRight{
+      position: fixed;
+      top:270px;
+      padding: 1%;
+      left: 50%;
+  }
+  
+  
+  #studentProgress{
+      padding: 2%;
+  }
+  #timeDiv{
+      text-align: right;
+  }
+  .btn{
+      color:#fff;
+      margin-top: 3%;
+      background-color: #1A6E88;
+      border-radius: 5px;
+      border:2px solid #00BCD4; 
+  }
+  .btn:hover{
+      background-color:#00BCD4;
+  }
+  
+  /*[3]MEDIA QUERIES*/
+  @media only screen and (max-width: 1250px){
+      #bottomRight{
+          top:45%;
+      }
+  }
+  @media only screen and (max-width: 1150px){
+      #menu{
+          right:-13%;
+      }
+  }
+  @media only screen and (max-width: 890px){
+      #bottomRight{
+          padding: 1%;
+          top:40%;
+      }
+          h4{
+          font-size: 18px;
+      }
+      h5{
+          font-size: 16px;
+      }
+      h6{
+          font-size: 14px;}
+  }
+  
+  @media only screen and (max-width: 780px){
+      #bottomRight{
+          top:38%;
+          padding: 3%;
+      }
+  }
+  @media only screen and (max-width: 750px){
+      #menu span {
+          font-size: 18px;
+      }
+  }
+  @media only screen and (max-width: 700px){
+      #menu{
+          right:-12%;
+      }
+      #menu span{
+          font-size: 16px;
+      }
+  }
+  @media only screen and (max-width: 680px){
+      #topRight,
+      #bottomRight{
+          width: 300px;
+      }
+      #menu span{
+          font-size: 16px;
+      }
+      .bottomLeft{
+          top:320px;
+      }
+  }
+  @media only screen and (max-width: 650px){
+      #menu span{
+          font-size: 14px;
+      }
+  }
+  @media only screen and (max-width: 625px){
+      #menu span{
+          font-size: 14px;
+      }
+      h4{
+          font-size: 20px;
+      }
+      h5{
+          font-size: 18px;
+      }
+      h6{
+          font-size: 16px;
+      }
+      #bottomRight{
+          top:40%;
+      }
+      #studentImage{
+          width:150px;
+          padding: 0;
+      }
+      #bottomLeft{
+          top:300px;
+      }
+  }
+  @media only screen and (max-width: 580px){
+      #menu span{
+          font-size: 12px;
+      }
+  }
+  /*major styling change to fix 550 and smaller*/
+  @media only screen and (max-width: 550px){
+      #topLeft,
+      #bottomLeft{
+      left:2%;
+      }
+      #topRight,
+      #bottomRight{
+          left:40%;
+          width:250px;
+      }
+      #bottomRight{
+          top:30%;
+      }
+      #topRight{
+          text-align: center;
+      }
+      .progress{
+          margin:0 auto;
+          height: 20px;
+          width:50%;
+      }
+      .btn{
+          border:none;
+          height:20px;
+      }
+      .btn:hover{
+          background-color:initial;
+      }
+  }
+  @media only screen and (max-width: 530px){
+      #menu{
+          right:-15%;
+          width:25%;
+      }
+  }
+  /*major change in styling for mobile devices*/
+  @media only screen and (max-width: 450px){
+      #studentImage{
+          display: none;
+      }
+      #topLeft,
+      #topRight,
+      #bottomLeft,
+      #bottomRight{
+          display: block;
+          width:350px;
+          position: fixed;
+          left:5%;
+          margin:0 auto;
+      }
+      /*student details*/
+      #topLeft{
+          text-align: center;
+          top:3%;
+          padding:2%;
+          height:70px;
+      }
+      /*menu/selector*/
+      #bottomLeft{
+          text-align: center;
+          top:245px;
+          height: 50px;
+      }
+      /*progress and dashboard*/
+      #topRight{
+          padding-bottom: 0;
+          top:85px;
+          height:150px;
+      }
+      /*subject details*/
+      #bottomRight{
+          margin: 0 auto;
+          text-align: left;
+          padding: 5px;
+          padding-left: 10px;
+          height:230px;
+          top:305px;
+      }
+      #menu{
+          background-color: #3F4C56;
+          height:130px;
+      }
+      h4{
+          font-size: 14px;
+      }
+      h5{
+          font-size: 12px;
+      }
+      h6{
+          font-size: 12px;
+          font-weight: normal;
+      }
+      .btn{
+          border:none;
+          font-size: 12px;
+          height: 16px;
+      }
+      .progress{
+          height: 20px;
+      }
+      #menu{
+          width:25%;
+          right:-11%;
+      }
+      #menu span{
+          color:transparent;
+      }
+  }
+  @media only screen and (max-width: 415px){
+      #menu{
+          right:-13%;
+          width:30%;
+  
+      }
+  }
+</style>
+	<body>
+<br><br>
+<!-- STARTING MAIN CONTENT -->
+		<!-- user info -->
+		<!-- top left -->
+		<div id="topLeft" m-20>
+			<img src="" id="studentImage" alt="student profile picture" class="rounded-circle">
+			<h4 id="studentName"></h4>
+			<span id="studentID"></span>
+		</div>
+
+		<!-- student progress -->
+		<!-- top right -->
+		<div id="topRight">
+			<div class="timeDiv">
+				<span id="displayTime"></span>
+			</div>
+			<h5>Student Attendance</h5>
+				<div class="progress">
+					<!-- the width generated goes below -->
+  					<div id="studentProgress" class="progress-bar bg-info" style="" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+  					</div>
+				</div>
+				<div class="text-center">
+					<button class="btn">Resume</button>
+				</div>
+		</div>
+
+		<!-- bottom left -->
+		<div id="bottomLeft">
+			<div id="active">
+			<a href="#" onclick="courses()">courses</a>
+			<a href="#" onclick="activity()">activity</a>
+			<a href="#" onclick="account()">account</a>
+			</div>
+		</div>
+
+		<!-- bottom right -->
+		<div id="bottomRight">
+			<h4 id="title"></h4>
+			<ul id="list"></ul>
+
+		</div>
+		<!-- ENDING MAIN CONTENT -->
+
+		<!-- STARTING SIDE MENU -->
+		<div id="menu">
+			<i class="fas fa-bars" onclick="menu()"></i>
+
+			<i class="fas fa-home"><span id="home">Home</span></i>
+			<i class="fas fa-sign-out-alt"><span id="logOut">Log Out</span></i>
+		</div>
+		<!-- ENDING SIDE MENU -->
+		
+		<!--jquery -->
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<!-- popper is required for bootstrap 4 js functionality -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+		<!-- makes bootstrap 4 js work -->
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+		<!-- my custom js -->
+		<script type="text/javascript">
+			var user = {
+				name: "Pratik Kedarnath Yadav",
+				image: "https://avatars2.githubusercontent.com/u/37347968?s=460&v=4",
+				progress: 0.66
+			}
+			
+			var courseArr = [{
+					title: "Readings in World Literature",
+					subject: "Social Studies"
+				}, {
+					title: "Theory of Numbers",
+					subject: "Mathematics"
+				}, {
+					title: "Farsi 301",
+					subject: "Languages"
+				}];
+			
+			var activityArr = [{
+					title: "Completed SOSC 503 Module 7 Quiz",
+					subject: "Submitted for review 6/11/18 at 10:39PM"
+				}, {
+					title: "Commented in MATH104 Tuesday Discussion Group",
+					subject: "Who wants to grab coffee to talk..."
+				}, {
+					title: "Enrolled in FARS301",
+					subject: "Cohort begins 9/08/18"
+				}];
+			
+			var accountArr = [{
+					title: "Enrolled since: ",
+					subject: "9/06/2017"
+				}, {
+					title: "Enrollment Status: ",
+					subject: "Active Student"
+				}, {
+					title: "Department",
+					subject: "Computer Science"
+				}];
+			
+			// [1]topLeft
+			
+			//an object constructor that takes an user image, image, name and id
+			function userDetails(user, image, name, id){
+			image.src=user.image;
+			image.alt=user.name;
+			name.innerText=user.name;
+			id.innerText="User#: "+ Math.floor(Math.random()*1000)+1;
+			}
+			
+			//using the object constructor to create an user
+			userDetails(user,document.getElementById("studentImage"), document.getElementById("studentName"), document.getElementById("studentID"));
+			
+			// [2]topRight
+			//content for topRight div
+			
+			//for the time
+			function leadingZero(number) {
+			if (number < 10) {
+			return "0" + number;
+			} else {
+			return number;
+			}
+			}
+			
+			function displayDate(){
+			var myDate = new Date();
+			//time
+			var currentSs=leadingZero(myDate.getSeconds());
+			var currentHr=leadingZero(myDate.getHours());
+			if (currentHr>12){
+				currentHr=currentHr-12;
+			}
+			if (currentHr<12){
+				currentSs=currentSs+" pm";
+			}else{
+				currentSs=currentSs+" am";
+			}
+			//date
+			var currentMin=leadingZero(myDate.getMinutes());
+			var currentYear=myDate.getFullYear();
+			var currentMonth=leadingZero(myDate.getMonth()+1);
+			var currentDay=leadingZero(myDate.getDate());
+			
+			//display time
+			var displayArea=document.getElementById("displayTime");
+				displayArea.innerHTML=currentHr+":"+currentMin+":"+currentSs +" | "+ currentDay+"/"+currentMonth+"/"+currentYear;
+			
+			setTimeout(function() {
+			displayDate();
+			}, 1000)
+			}
+			displayDate();
+			
+			function studentProgress(user, progress){
+			progress.innerText=user.progress*100+"%";
+			progress.style.width=user.progress*100+"%";
+			}
+			
+			studentProgress(user, document.getElementById("studentProgress"),(document.getElementById("studentProgress")));
+			
+			// [3]bottomLeft
+			
+			//[4]bottomRight
+			function currentTab(array, title, list, string){
+			title.innerText=string;
+			list.innerHTML="";
+			for(var i=0; i<array.length; i++){
+				list.innerHTML+="<li><h6>"+array[i].title+ "</h6><p>"+ array[i].subject+ "</p></li>"
+			}
+			}
+			
+			function courses(){
+			currentTab(courseArr, document.getElementById("title"), document.getElementById("list"), "My Courses:")
+			}
+			
+			function activity(){
+			currentTab(activityArr, document.getElementById("title"), document.getElementById("list"), "My Recent Activity:")
+			}
+			
+			function account() {
+			currentTab(accountArr, document.getElementById("title"), document.getElementById("list"), "My Account:")
+			}
+			
+			//[5]menu
+			//when the button is clicked the words log out and home will appear
+			//also the menu will expand from 10 to 20% 
+			function menu(){
+			document.getElementById("menu").classList.toggle("menuExpand");
+			document.getElementById("home").classList.toggle("whiteText");
+			document.getElementById("logOut").classList.toggle("whiteText");
+			}
+			
+			courses();
+		</script>
+	</body>
+</html>
+{% endblock body %}

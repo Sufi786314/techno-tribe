@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block title %}Teacher's Profiles{% endblock title %}
+
+{% block body %}
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profiles</title>
+  <style>
+    /* Styles for the card container */
+    .card {
+      width: 200px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    /* Styles for the card hover effect */
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Styles for the profile image */
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* Styles for the profile title */
+    .card h3 {
+      margin-top: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <h1 align='center'>Teacher's Portal</h1>
+  <hr>
+  <div class="card">
+    <img src="{% static 'sir1.jpg'%}" height='100px'  width='170px'alt="Profile Picture">
+    <h3>RAJWANT SIR</h3>
+  </div>
+
+  <div class="card">
+    <img src="{% static 'sir3.jpg'%}" height='100px'  width='170px'alt="Profile Picture">
+    <h3>AKHELESH SIR</h3>
+  </div>
+
+  <!-- Add more profiles as needed -->
+
+</body>
+</html>
+{% endblock body %}

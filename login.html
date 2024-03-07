@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}LOGIN{% endblock title %}
+
+{% block body %}
+<div class = "container">
+<form method="POST" class="col-6 mx-auto card p-3 shadow-lg my-4 " enctype="multipart/form-data" >
+    <h2>Login</h2>
+
+{% if messages %}
+<div class="alert alert-primary" role="alert" >
+  <p>{% for message in messages %}
+    {{message}} 
+    {% endfor %}</p>
+</div>
+{% endif %}
+  <ul>
+      <li {% if message.tags %}class="{{message.tags}}"{% endif %}>{{message}}</li>
+  </ul> 
+
+    <hr>
+    {% csrf_token %}
+    <div class="container">
+      {% load static %}
+      <img src="{% static 'att-logo.png' %}" class="center" style="height:200px; width:250px;" >
+      <style>
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+          }
+      </style>
+    </div>
+      <div class="mb-3">
+    <label for="name" class="form-label">Username</label>
+    <input type="text" name="username" required class="form-control" placeholder="Name ">
+    </div>
+
+
+    <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" name="password" required  class="form-control" placeholder="Password">
+    </div>
+
+    <input type="submit" value="Login" class="my-4 btn btn-outline-success">
+    <a href='login' >Register</a>
+  
+  </form> 
+
+
+  {% endblock body %}

@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock title %}|ATTENDENCE TRACKER</title>
+    {% load static %}
+    <link rel="icon" href="{% static 'att-logo.png' %}" type="image/icon type">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    {% csrf_token %}  
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    {% load static %}
+    <img src="{% static 'att-logo.png' %}" type="image/icon type" style="height:50px; width:50px;">
+    <a class="navbar-brand mx-3" href="/">ATTENDENCE TRACKER</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="/home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/services">Services</a>
+        </li>
+        {%if request.user.is_authenticated%}
+         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            PORTAL
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="teacher">TEACHER</a></li>
+            <li><a class="dropdown-item" href="student">STUDENT</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here </a></li>
+          </ul>
+        </li> 
+        {%endif%}
+        <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search"  name='search' placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success mx-3" type="submit">Search</button>
+       {%if request.user.is_authenticated%}
+      <a href="login" class="btn btn-outline-danger" type="submit">Logout</a>
+       {% else %}
+       <a href="login" class="btn btn-outline-success" type="submit">Login</a>
+       {% endif%}
+      </form>
+    </div>
+  </div>
+</nav>
+{% block body %}{% endblock body %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="container">
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="/home" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="/contact" class="nav-link px-2 text-body-secondary">Contact</a></li>
+          <li class="nav-item"><a href="/services" class="nav-link px-2 text-body-secondary">Services</a></li>
+          {% comment %} <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li> {% endcomment %}
+          <li class="nav-item"><a href="/about" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+        <p class="text-center text-body-secondary">© 2023 PayaEnterprises, Inc</p>
+      </footer>
+    </div>
+  </body>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');
+  
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.wk-desk-1{
+  width: 8.333333%;
+}
+.wk-desk-2{
+  width: 16.666667%;
+}
+.wk-desk-3{
+  width: 25%;
+}
+.wk-desk-4{
+  width: 33.333333%;
+}
+.wk-desk-5{
+  width: 41.666667%;
+}
+.wk-desk-6{
+  width: 50%;
+}
+.wk-desk-7{
+  width: 58.333333%;
+}
+.wk-desk-8{
+  width: 66.666667%;
+}
+.wk-desk-9{
+  width: 75%;
+}
+.wk-desk-10{
+  width: 83.333333%;
+}
+.wk-desk-11{
+  width: 91.666667%;
+}
+.wk-desk-12{
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .wk-ipadp-1{
+    width: 8.333333%;
+  }
+  .wk-ipadp-2{
+    width: 16.666667%;
+  }
+  .wk-ipadp-3{
+    width: 25%;
+  }
+  .wk-ipadp-4{
+    width: 33.333333%;
+  }
+  .wk-ipadp-5{
+    width: 41.666667%;
+  }
+  .wk-ipadp-6{
+    width: 50%;
+  }
+  .wk-ipadp-7{
+    width: 58.333333%;
+  }
+  .wk-ipadp-8{
+    width: 66.666667%;
+  }
+  .wk-ipadp-9{
+    width: 75%;
+  }
+  .wk-ipadp-10{
+    width: 83.333333%;
+  }
+  .wk-ipadp-11{
+    width: 91.666667%;
+  }
+  .wk-ipadp-12{
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wk-tab-1{
+    width: 8.333333%;
+  }
+  .wk-tab-2{
+    width: 16.666667%;
+  }
+  .wk-tab-3{
+    width: 25%;
+  }
+  .wk-tab-4{
+    width: 33.333333%;
+  }
+  .wk-tab-5{
+    width: 41.666667%;
+  }
+  .wk-tab-6{
+    width: 50%;
+  }
+  .wk-tab-7{
+    width: 58.333333%;
+  }
+  .wk-tab-8{
+    width: 66.666667%;
+  }
+  .wk-tab-9{
+    width: 75%;
+  }
+  .wk-tab-10{
+    width: 83.333333%;
+  }
+  .wk-tab-11{
+    width: 91.666667%;
+  }
+  .wk-tab-12{
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .wk-mobile-1{
+    width: 8.333333%;
+  }
+  .wk-mobile-2{
+    width: 16.666667%;
+  }
+  .wk-mobile-3{
+    width: 25%;
+  }
+  .wk-mobile-4{
+    width: 33.333333%;
+  }
+  .wk-mobile-5{
+    width: 41.666667%;
+  }
+  .wk-mobile-6{
+    width: 50%;
+  }
+  .wk-mobile-7{
+    width: 58.333333%;
+  }
+  .wk-mobile-8{
+    width: 66.666667%;
+  }
+  .wk-mobile-9{
+    width: 75%;
+  }
+  .wk-mobile-10{
+    width: 83.333333%;
+  }
+  .wk-mobile-11{
+    width: 91.666667%;
+  }
+  .wk-mobile-12{
+    width: 100%;
+  }
+}
+*{
+    font-family:Nunito, sans-serif;
+  }
+  .text-blk{
+    margin-top:0px;
+    margin-right:0px;
+    margin-bottom:0px;
+    margin-left:0px;
+    line-height:25px;
+  }
+  .responsive-cell-block{
+    min-height:75px;
+  }
+  input:focus{
+    outline-color:initial;
+    outline-style:none;
+    outline-width:initial;
+  }
+  .container-block{
+    min-height:75px;
+    width:100%;
+    padding-top:10px;
+    padding-right:10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    display:block;
+  }
+  .submit-btn:hover{
+    background-image:initial;
+    background-position-x:initial;
+    background-position-y:initial;
+    background-size:initial;
+    background-repeat-x:initial;
+    background-repeat-y:initial;
+    background-attachment:initial;
+    background-origin:initial;
+    background-clip:initial;
+    background-color:rgb(3, 129, 254);
+  }
+  .responsive-container-block{
+    min-height:75px;
+    height:fit-content;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    margin-top:0px;
+    margin-right:auto;
+    margin-bottom:50px;
+    margin-left:auto;
+  }
+  .responsive-container-block.big-container{
+    padding-top:10px;
+    padding-right:30px;
+    padding-bottom:10px;
+    padding-left:30px;
+    position:relative;
+    height:auto;
+  }
+  .responsive-container-block.container{
+    position:static;
+    min-height:75px;
+    flex-direction:column;
+    z-index:2;
+    max-width:800px;
+    margin-top:120px;
+    margin-right:auto;
+    margin-bottom:50px;
+    margin-left:auto;
+  }
+  .container-block.form-wrapper{
+    background-color:rgb(255, 255, 255);
+    max-width:799px;
+    text-align:center;
+    padding-top:50px;
+    padding-right:40px;
+    padding-bottom:50px;
+    padding-left:40px;
+    box-shadow:rgba(0, 0, 0, 0.05) 0px 4px 20px 7px;
+    border-top-left-radius:6px;
+    border-top-right-radius:6px;
+    border-bottom-right-radius:6px;
+    border-bottom-left-radius:6px;
+    margin-top:0px;
+    margin-right:auto;
+    margin-bottom:0px;
+    margin-left:auto;
+  }
+  .text-blk.contactus-head{
+    font-size:38px;
+    line-height:52px;
+    font-weight:900;
+  }
+  .text-blk.contactus-subhead{
+    color:rgb(156, 156, 156);
+    margin-top:0px;
+    margin-right:0px;
+    margin-bottom:50px;
+    margin-left:0px;
+  }
+  .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12{
+    margin-top:0px;
+    margin-right:0px;
+    margin-bottom:26px;
+    margin-left:0px;
+    min-height:50px;
+  }
+  .input{
+    width:96%;
+    height:50px;
+    padding-top:1px;
+    padding-right:15px;
+    padding-bottom:1px;
+    padding-left:15px;
+    border-top-width:2px;
+    border-right-width:2px;
+    border-bottom-width:2px;
+    border-left-width:2px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+    border-top-color:rgb(238, 238, 238);
+    border-right-color:rgb(238, 238, 238);
+    border-bottom-color:rgb(238, 238, 238);
+    border-left-color:rgb(238, 238, 238);
+    border-image-source:initial;
+    border-image-slice:initial;
+    border-image-width:initial;
+    border-image-outset:initial;
+    border-image-repeat:initial;
+    font-size:16px;
+    color:rgb(0, 0, 0);
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:4px;
+  }
+  .textinput{
+    width:98%;
+    min-height:150px;
+    padding-top:20px;
+    padding-right:15px;
+    padding-bottom:20px;
+    padding-left:15px;
+    border-top-width:2px;
+    border-right-width:2px;
+    border-bottom-width:2px;
+    border-left-width:2px;
+    border-top-style:solid;
+    border-right-style:solid;
+    border-bottom-style:solid;
+    border-left-style:solid;
+    border-top-color:rgb(238, 238, 238);
+    border-right-color:rgb(238, 238, 238);
+    border-bottom-color:rgb(238, 238, 238);
+    border-left-color:rgb(238, 238, 238);
+    border-image-source:initial;
+    border-image-slice:initial;
+    border-image-width:initial;
+    border-image-outset:initial;
+    border-image-repeat:initial;
+    font-size:16px;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:4px;
+  }
+  .submit-btn{
+    width:98%;
+    background-color:rgb(3, 169, 244);
+    height:60px;
+    font-size:20px;
+    font-weight:700;
+    color:rgb(255, 255, 255);
+    border-top-width:0px;
+    border-right-width:0px;
+    border-bottom-width:0px;
+    border-left-width:0px;
+    border-top-style:outset;
+    border-right-style:outset;
+    border-bottom-style:outset;
+    border-left-style:outset;
+    border-top-color:rgb(118, 118, 118);
+    border-right-color:rgb(118, 118, 118);
+    border-bottom-color:rgb(118, 118, 118);
+    border-left-color:rgb(118, 118, 118);
+    border-image-source:initial;
+    border-image-slice:initial;
+    border-image-width:initial;
+    border-image-outset:initial;
+    border-image-repeat:initial;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+    border-bottom-left-radius:4px;
+    cursor:pointer;
+  }
+  .form-box{
+    margin-top:0px;
+    margin-right:auto;
+    margin-bottom:0px;
+    margin-left:auto;
+  }
+  .social-media-links{
+    width:250px;
+    display:flex;
+    justify-content:space-evenly;
+    margin-top:50px;
+    margin-right:auto;
+    margin-bottom:0px;
+    margin-left:auto;
+  }
+  .link-img{
+    width:30px;
+    height:30px;
+  }
+  .text-blk.input-title{
+    text-align:left;
+    padding-top:0px;
+    padding-right:0px;
+    padding-bottom:0px;
+    padding-left:10px;
+    font-size:14px;
+    margin-top:0px;
+    margin-right:0px;
+    margin-bottom:5px;
+    margin-left:0px;
+    color:rgb(156, 156, 156);
+  }
+  ::placeholder{
+    color:rgb(218, 218, 218);
+  }
+  .blueBG{
+    position:absolute;
+    width:100%;
+    left:0px;
+    top:0px;
+    height:300px;
+    background-color:rgb(3, 169, 244);
+  }
+  @media (max-width: 768px){
+    .submit-btn{
+      width:100%;
+    }
+    .input{
+      width:100%;
+    }
+    .textinput{
+      width:100%;
+    }
+    .container-block.form-wrapper{
+      margin-top:80px;
+      margin-right:0px;
+      margin-bottom:0px;
+      margin-left:0px;
+    }
+    .text-blk.input-title{
+      padding-top:0px;
+      padding-right:0px;
+      padding-bottom:0px;
+      padding-left:0px;
+    }
+    .responsive-container-block.container{
+      margin-top:80px;
+      margin-right:0px;
+      margin-bottom:50px;
+      margin-left:0px;
+    }
+    .container-block.form-wrapper{
+      margin-top:0px;
+      margin-right:0px;
+      margin-bottom:0px;
+      margin-left:0px;
+    }
+  }
+  @media (max-width: 500px){
+    .container-block.form-wrapper{
+      padding-top:50px;
+      padding-right:15px;
+      padding-bottom:50px;
+      padding-left:15px;
+    }
+    .container-block.form-wrapper{
+      margin-top:60px;
+      margin-right:0px;
+      margin-bottom:0px;
+      margin-left:0px;
+    }
+    .responsive-cell-block.wk-ipadp-6.wk-tab-12.wk-mobile-12.wk-desk-6{
+      margin-top:0px;
+      margin-right:0px;
+      margin-bottom:15px;
+      margin-left:0px;
+    }
+    .responsive-container-block{
+      margin-top:0px;
+      margin-right:0px;
+      margin-bottom:35px;
+      margin-left:0px;
+    }
+    .text-blk.input-title{
+      font-size:12px;
+    }
+    .responsive-container-block.container{
+      margin-top:50px;
+      margin-right:0px;
+      margin-bottom:50px;
+      margin-left:0px;
+    }
+    .container-block.form-wrapper{
+      margin-top:0px;
+      margin-right:0px;
+      margin-bottom:0px;
+      margin-left:0px;
+    }
+    .responsive-container-block.big-container{
+      padding-top:10px;
+      padding-right:20px;
+      padding-bottom:10px;
+      padding-left:20px;
+    } 
+    .text-blk.contactus-head{
+      font-size:30px;
+      line-height:35px;
+    }
+  } 
+</style>
+</html>
+
